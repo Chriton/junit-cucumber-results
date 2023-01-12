@@ -1,0 +1,26 @@
+name: 'Junit Cucumber Results'
+description: 'Reads a Junit Cucumber xml test file outputting: failures, errors, skipped, passed, time, tests.'
+
+inputs:
+  path:
+    description: 'The path to the file to be processed'
+    required: true
+
+outputs:
+  tests:
+    description: 'The total number of tests that have run.'
+  failures:
+    description: 'The number of failed tests.'
+  errors:
+    description: 'The number of test errors.'
+  skipped:
+    description: 'The number of skipped tests.'
+  passed:
+    description: 'The number of passed tests.'
+  time:
+    description: 'The time taken to run the tests.'
+
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
+

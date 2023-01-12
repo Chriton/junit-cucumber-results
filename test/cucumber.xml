@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="3.33">
+    <testcase classname="Homepage" name="Availability Of Homepage" time="1.21">
+        <system-out>
+            <![CDATA[When I open the "Home" page.........................................passed
+Then I am on the "Home" page........................................passed
+]]>
+        </system-out>
+    </testcase>
+</testsuite>

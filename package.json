@@ -1,0 +1,27 @@
+{
+  "name": "junit-cucumber-results",
+  "version": "1.0.0",
+  "description": "reads a junit cucumber xml file",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "ncc build src/index.js -o dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chriton/junit-cucumber-results.git"
+  },
+  "keywords": [
+    "cucumber",
+    "junit"
+  ],
+  "author": "Chriton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Chriton/junit-cucumber-results/issues"
+  },
+  "homepage": "https://github.com/Chriton/junit-cucumber-results#readme",
+  "devDependencies": {
+    "@vercel/ncc": "^0.36.0"
+  }
+}
