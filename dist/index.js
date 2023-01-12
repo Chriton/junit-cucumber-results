@@ -16293,6 +16293,7 @@ async function run() {
     let skipped = 0;
     let passed = 0;
     let time = 0;
+    let summary = '';
 
     xml2js.parseString(xml, (err, result) => {
         if (err) {
@@ -16306,17 +16307,10 @@ async function run() {
         skipped = Number(result.testsuite.$.skipped);
         passed = tests - failures - skipped;
         time = result.testsuite.$.time;
-
-        // Console.log
-        console.log("tests: ", tests);
-        console.log("failures: ", failures);
-        console.log("errors: ", errors);
-        console.log("skipped: ", skipped);
-        console.log("passed: ", passed);
-        console.log("time: ", time);
+        summary = tests + " test(s), " + failures + " failures, " + errors + " errors, " + skipped + " skipped, " + passed + " passed.";
 
         // Workflow log
-        core.info("Test")
+        core.info("Finished parsing the test results");
 
         // Output to use in other steps
         core.setOutput("tests", tests);
@@ -16327,13 +16321,8 @@ async function run() {
         core.setOutput("time", time);
 
         // Annotations
-        core.notice("Finished processing test results.");
-        core.notice("tests: " + tests);
-        core.notice("failures: " + failures);
-        core.notice("errors: " + errors);
-        core.notice("skipped: " + skipped);
-        core.notice("passed: " + passed);
-        core.notice("time: " + time);
+        core.notice("Test Summary: " + summary);
+        core.notice("Test run time: " + time + "s");
     });
   } catch (error) {
     core.setFailed(error.message);
