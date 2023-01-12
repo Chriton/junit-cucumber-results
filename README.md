@@ -1,12 +1,13 @@
 # Junit Cucumber Test Results
 
 Reads a Junit cucumber XML file and outputs:
-    - tests = The total number of tests that have run
-    - failures = The number of failed tests
-    - errors = The number of test errors
-    - skipped = The number of skipped tests
-    - passed = The number of passed tests
-    - time = The time taken to run the tests
+- tests = The total number of tests that have run
+- failures = The number of failed tests
+- errors = The number of test errors
+- skipped = The number of skipped tests
+- passed = The number of passed tests
+- time = The time taken to run the tests
+- summary = A summary of the test results
 
 
 ## Build a distribution

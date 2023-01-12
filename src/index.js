@@ -33,7 +33,7 @@ async function run() {
         summary = tests + " test(s), " + failures + " failures, " + errors + " errors, " + skipped + " skipped, " + passed + " passed.";
 
         // Workflow log
-        core.info("Finished parsing the test results");
+        core.info("Finished parsing test results.");
 
         // Output to use in other steps
         core.setOutput("tests", tests);
@@ -42,6 +42,7 @@ async function run() {
         core.setOutput("skipped", skipped);
         core.setOutput("passed", passed);
         core.setOutput("time", time);
+        core.setOutput("summary", summary);
 
         // Annotations
         core.notice("Test Summary: " + summary);

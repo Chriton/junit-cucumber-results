@@ -19,6 +19,8 @@ outputs:
     description: 'The number of passed tests.'
   time:
     description: 'The time taken to run the tests.'
+  summary:
+    description: 'A summary of the test results.'
 
 runs:
   using: 'node16'
