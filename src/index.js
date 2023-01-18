@@ -4,21 +4,8 @@ const fs = require('fs');
 const xml2js = require('xml2js');
 
 /**
- * Converts the given seconds to a Human Readable format.
- * Example: 1h 2m 3s
- *
- * @param sec The number of seconds to convert.
- * @returns {string} The Human Readable format.
+ * Main function
  */
-function convertTime(sec) {
-    let sec_num = parseInt(sec, 10); // don't forget the second param
-    let hours = Math.floor(sec_num / 3600);
-    let minutes = Math.floor((sec_num - (hours * 3600)) / 60);
-    let seconds = sec_num - (hours * 3600) - (minutes * 60);
-
-    return (hours === 0 ? '' : hours + 'h ') + (minutes === 0 && hours === 0 ? '' : minutes + 'min ') + seconds + 'sec';
-}
-
 async function run() {
 
     try {
@@ -45,7 +32,7 @@ async function run() {
             skipped = Number(result.testsuite.$.skipped);
             passed = tests - failures - skipped;
             time = convertTime(result.testsuite.$.time);
-            summary = tests + " test(s), " + failures + " failures, " + errors + " errors, " + skipped + " skipped, " + passed + " passed.";
+            summary = tests + " test(s)" + ", Failures: " + failures + ", Errors: " + errors + ", Skipped: " + skipped + ", Passed: " + passed;
 
             // Workflow log
             core.info("Finished parsing test results.");
@@ -61,11 +48,46 @@ async function run() {
 
             // Annotations
             core.notice("Test Summary: " + summary);
-            core.notice("Test run time: " + time);
+            core.notice("Test Run Time: " + time);
         });
     } catch (error) {
         core.setFailed(error.message);
     }
 }
 
+// -------------------- Helper functions --------------------
+
+/**
+ * Removes the comma from the given number.
+ *
+ * Example: 1,2345.20 => 12345.20
+ *
+ * @param number The number to parse.
+ * @returns {string} The parsed number.
+ */
+function removeCommaFromNumber(number) {
+    return parseFloat(number.replaceAll(",", "")).toString();
+}
+
+/**
+ * Converts the given seconds to a Human Readable format.
+ * Example: 1h 2m 3s
+ *
+ * @param sec The number of seconds to convert.
+ * @returns {string} The Human Readable format.
+ */
+function convertTime(sec) {
+    let sec_num = parseInt(removeCommaFromNumber(sec), 10);
+    let hours = Math.floor(sec_num / 3600);
+    let minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+    let seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+    return (hours === 0 ? '' : hours + 'h ') + (minutes === 0 && hours === 0 ? '' : minutes + 'min ') + seconds + 'sec';
+}
+
+// --------------------
+
+/**
+ * Runs the main function.
+ */
 run();
