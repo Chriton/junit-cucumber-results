@@ -47,8 +47,7 @@ async function run() {
             core.setOutput("summary", summary);
 
             // Annotations
-            core.notice("Test Summary: " + summary);
-            core.notice("Test Run Time: " + time);
+            core.notice("Test Summary: " + summary + ". Run time: " + time);
         });
     } catch (error) {
         core.setFailed(error.message);

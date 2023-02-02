@@ -22,7 +22,7 @@ Make sure that every time you modify the code inside `src` directory, you run th
 
     - name: Junit Cucumber Test Results
       id: junit-cucumber-test-results
-      uses: chriton/junit-cucumber-results@v1.3
+      uses: chriton/junit-cucumber-results@v1.4
       with:
         path: 'test/cucumber.xml'
 
